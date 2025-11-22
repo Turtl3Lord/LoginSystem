@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login Page</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="loginContainer">
+            <h2>LOGIN</h2> 
+            <form action="/login" method="post">
+                <div>
+                    <label for="username">Username:</label>
+                    <input class="inputField"  type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input class="inputField" type="password" id="password" name="password" required>
+                </div>
+                <div>
+                    <button class="loginButton btn-bg-blue" type="submit">Login</button>
+                                        <button class="loginButton bg-black" type="submit">Google</button>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
