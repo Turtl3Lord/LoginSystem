@@ -1,0 +1,35 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full-screen center layout */
+body, html {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f6fa;
+}
+
+.dashboard-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* User name box */
+.user-box {
+    background: white;
+    padding: 40px 70px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.user-box h1 {
+    font-size: 2.2rem;
+    color: #333;
+    font-weight: 600;
+}

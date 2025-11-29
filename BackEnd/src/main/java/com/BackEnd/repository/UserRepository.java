@@ -1,19 +1,21 @@
 package com.BackEnd.repository;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import com.BackEnd.models.User;
+
+import java.util.Optional;
 
 @Repository
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, String> {
 
-    private final JdbcTemplate jdbc;
 
-    public UserRepository(JdbcTemplate jdbc) {
-        this.jdbc = jdbc;
-    }
+    Optional<User> findById(String id);
 
-    public void saveUser(String login, String password) {
-        String sql = "INSERT INTO users (login, password) VALUES (?, ?)";
-        jdbc.update(sql, login, password);
-    }
+    User save(User user);
+
+    User saveAndFlush(User user);
+
+    void deleteById(String id);
+
 }
