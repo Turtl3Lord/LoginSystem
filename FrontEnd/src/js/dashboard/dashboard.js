@@ -22,5 +22,5 @@ document.onload = (() => {
     // Aqui você adiciona a lógica de logout
     // Por exemplo: limpar localStorage, sessionStorage, redirecionar, etc.
     localStorage.clear(); // ou removeItem('token')
-    window.location.href = './login.html'; // ajuste o caminho conforme necessário
+    window.location.href = './index.html'; // ajuste o caminho conforme necessário
 });
