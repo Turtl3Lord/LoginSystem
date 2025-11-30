@@ -1,6 +1,6 @@
 package com.BackEnd.controllers;
 
-
+import com.BackEnd.models.Authentication;
 import com.BackEnd.requests.AuthRequest;
 import com.BackEnd.services.AuthService;
 import com.BackEnd.services.JwtTokenService;
@@ -14,51 +14,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
     private final AuthService authService;
     private final JwtTokenService jwtTokenService;
-
-
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     public AuthController(AuthService authService, JwtTokenService jwtTokenService) {
         this.authService = authService;
         this.jwtTokenService = jwtTokenService;
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
-
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody AuthRequest request) {
-    System.out.println("Received signin request: " + request);
-        try {
-            logger.info("Login attempt for email: {}", request.getEmail());
-            logger.info("Provider: {}", request.getProvider());
+        Authentication result = authService.authenticate(request);
 
-            var result = authService.authenticate(request);
-
-            logger.info("Login successful for: {}", request.getEmail());
-            return ResponseEntity.ok(Map.of(
-                    "success", true,
-                    "message", "Login successful",
-                    "token", jwtTokenService.generateToken(result.getUser())
-            ));
-
-        } catch (Exception e) {
-            logger.error("Login error for email: {}", request.getEmail(), e);
-            return ResponseEntity.status(500)
-                    .body(Map.of(
-                            "success", false,
-                            "message", "Internal server error: " + e.getMessage()
-                    ));
-        }
+        return ResponseEntity.ok(Map.of(
+                "success", true,
+                "message", "Login successful",
+                "token", jwtTokenService.generateToken(result.getUser())
+        ));
     }
 
     @PostMapping("/signup")
-    public String register(@RequestBody AuthRequest request) {
-        authService.register(request);
-        return "User Registered Successfully";
+    public ResponseEntity<?> signup(@RequestBody AuthRequest request) {
+       Authentication result =  authService.register(request);
+
+        return ResponseEntity.ok(Map.of(
+                "success", true,
+                "message", "User registered successfully",
+                "token", jwtTokenService.generateToken(result.getUser())));
     }
 }

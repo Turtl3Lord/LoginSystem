@@ -1,33 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Login Page</title>
+    <title>Criar Conta</title>
+    <link rel="stylesheet" href="../styles/register.css">
 </head>
 <body>
-
     <div class="container">
         <div class="loginContainer">
-            <h2>REGISTER</h2> 
-            <form action="/index.html" method="post">
-                <div>
-                    <label for="username">Username:</label>
-                    <input class="inputField"  type="text" id="username" name="username" required>
+            <h2>Criar Conta</h2>
+            <p class="subtitle">Preencha os dados para se cadastrar</p>
+            
+            <form id="registerForm" style="width: 100%;">
+                <div class="inputGroup">
+                    <label class="inputLabel" for="name">Nome Completo</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        class="inputField" 
+                        placeholder="Digite seu nome completo"
+                        required
+                    >
                 </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input class="inputField" type="password" id="password" name="password" required>
+                
+                <div class="inputGroup">
+                    <label class="inputLabel" for="email">E-mail</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="inputField" 
+                        placeholder="seu@email.com"
+                        required
+                    >
                 </div>
-                <div>
-                    <button class="loginButton btn-bg-blue" type="">register</button>
-                                        <button class="loginButton bg-black" type="submit">Google</button>
-
-
+                
+                <div class="inputGroup">
+                    <label class="inputLabel" for="password">Senha</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="inputField" 
+                        placeholder="Mínimo 6 caracteres"
+                        required
+                        minlength="6"
+                    >
+                    <div class="passwordRequirements">
+                        Use no mínimo 6 caracteres
+                    </div>
                 </div>
+                
+                <button type="submit" class="loginButton btn-bg-blue">
+                    Criar Conta
+                </button>
             </form>
+            
+            <div class="divider">
+                <span>ou</span>
+            </div>
+            
+            <div class="loginLink">
+                Já tem uma conta? <a href="./login.html">Faça login</a>
+            </div>
         </div>
     </div>
+    
+    <script type="module" src="../js/register/register.js"></script>
 </body>
 </html>

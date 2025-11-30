@@ -33,3 +33,23 @@ body, html {
     color: #333;
     font-weight: 600;
 }
+
+.logout-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #0056b3;
+}
+
+.logout-btn:active {
+    background-color: #004085;
+}

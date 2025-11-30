@@ -18,4 +18,9 @@ document.onload = (() => {
     });
 })();
 
-    
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+    // Aqui você adiciona a lógica de logout
+    // Por exemplo: limpar localStorage, sessionStorage, redirecionar, etc.
+    localStorage.clear(); // ou removeItem('token')
+    window.location.href = './login.html'; // ajuste o caminho conforme necessário
+});
