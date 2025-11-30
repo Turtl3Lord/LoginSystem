@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://loginsystem-1-23tz.onrender.com/api";
 
 export const  handleLogin = {
     login: async (email, password, provider = 'LOCAL') => {
