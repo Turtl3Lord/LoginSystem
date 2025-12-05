@@ -2,9 +2,7 @@ package com.BackEnd.controllers;
 
 import com.BackEnd.models.User;
 import com.BackEnd.repository.UserRepository;
-import com.BackEnd.requests.UserRequest;
 import com.BackEnd.services.JwtTokenService;
-import org.apache.catalina.startup.UserConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

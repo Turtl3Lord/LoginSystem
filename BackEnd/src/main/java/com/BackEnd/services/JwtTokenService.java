@@ -23,14 +23,14 @@ public class JwtTokenService {
     @Value("${JWT_ISSUER}")
     private String issuer;
 
-    public String generateToken(User user) {
+    public String generateToken(String userId) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secretKey);
             return JWT.create()
                     .withIssuer(issuer)
                     .withIssuedAt(creationDate())
                     .withExpiresAt(expirationDate())
-                    .withSubject(user.getId())
+                    .withSubject(userId)
                     .sign(algorithm);
         } catch (JWTCreationException exception){
             throw new JWTCreationException("Erro ao gerar token.", exception);

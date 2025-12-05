@@ -4,7 +4,7 @@ import com.BackEnd.exceptions.InvalidCredentialsException;
 import com.BackEnd.exceptions.RegistrationException;
 import com.BackEnd.exceptions.UserAlreadyExistsException;
 import com.BackEnd.exceptions.ValidationException;
-import com.BackEnd.requests.AuthRequest;
+import com.BackEnd.DTO.request.AuthRequest;
 import com.BackEnd.models.Authentication;
 import com.BackEnd.models.Provider;
 import com.BackEnd.models.User;
