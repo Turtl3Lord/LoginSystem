@@ -1,4 +1,4 @@
-package com.BackEnd.requests;
+package com.BackEnd.DTO.request;
 
 public class UserRequest {
     private String token;

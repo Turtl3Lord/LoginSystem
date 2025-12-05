@@ -1,4 +1,4 @@
-package com.BackEnd.requests;
+package com.BackEnd.DTO.request;
 
 import com.BackEnd.models.Provider;
 import jakarta.annotation.Nonnull;
