@@ -7,8 +7,6 @@ import com.BackEnd.models.Provider;
 import com.BackEnd.models.User;
 import com.BackEnd.repository.AuthenticationRepository;
 import com.BackEnd.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class LocalRegistrationService {
 
-    private static final Logger logger = LoggerFactory.getLogger(LocalRegistrationService.class);
 private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
     private final AuthenticationRepository authenticationRepository;
@@ -31,9 +28,11 @@ private final BCryptPasswordEncoder bCryptPasswordEncoder;
     @Transactional
     public Authentication register(LocalRegisterData data) {
         ensureEmailIsUnique(data.getEmail());
+        System.out.println("Registering user with name: " + data.getName());
+
 
         User user = new User();
-        user.setName(data.getUsername());
+        user.setName(data.getName());
         userRepository.save(user);
 
         Authentication auth = new Authentication();

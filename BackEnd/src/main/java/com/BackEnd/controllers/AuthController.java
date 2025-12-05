@@ -1,13 +1,11 @@
 package com.BackEnd.controllers;
 
+import com.BackEnd.DTO.authentication.LocalLoginData;
 import com.BackEnd.DTO.authentication.LocalRegisterData;
 import com.BackEnd.models.Authentication;
-import com.BackEnd.DTO.request.AuthRequest;
-import com.BackEnd.services.AuthService;
 import com.BackEnd.services.JwtTokenService;
+import com.BackEnd.services.authentication.LocalLoginService;
 import com.BackEnd.services.authentication.LocalRegistrationService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,30 +19,30 @@ import java.util.Map;
 @RequestMapping("/api/auth/local")
 public class AuthController {
 
-    private final AuthService authService;
     private final LocalRegistrationService localRegistrationService;
     private final JwtTokenService jwtTokenService;
-    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
+    private final LocalLoginService localLoginService;
 
-    public AuthController(AuthService authService, JwtTokenService jwtTokenService, LocalRegistrationService localRegistrationService) {
-        this.authService = authService;
+    public AuthController( JwtTokenService jwtTokenService, LocalRegistrationService localRegistrationService, LocalLoginService localLoginService ) {
         this.jwtTokenService = jwtTokenService;
         this.localRegistrationService = localRegistrationService;
+        this.localLoginService = localLoginService;
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<?> signin(@RequestBody AuthRequest request) {
-        Authentication result = authService.authenticate(request);
+    public ResponseEntity<?> signin(@RequestBody LocalLoginData loginData) {
+        String token = localLoginService.authenticate(loginData);
 
         return ResponseEntity.ok(Map.of(
                 "success", true,
                 "message", "Login successful",
-                "token", jwtTokenService.generateToken(result.getUser().getId())
+                "token", token
         ));
     }
 
-    @PostMapping("/signup/local")
+    @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody LocalRegisterData localRegisterData) {
+        System.out.println("Processing signup request for: " + localRegisterData.getName());
 
        Authentication result =  localRegistrationService.register(localRegisterData);
 

@@ -1,16 +1,17 @@
 package com.BackEnd.services.authentication;
 
-import com.BackEnd.DTO.request.AuthRequest;
+import com.BackEnd.DTO.authentication.LocalLoginData;
 import com.BackEnd.exceptions.InvalidCredentialsException;
 import com.BackEnd.models.Authentication;
 import com.BackEnd.repository.AuthenticationRepository;
 import com.BackEnd.repository.UserRepository;
 import com.BackEnd.services.JwtTokenService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LocalLoginService {
 
-    private final UserRepository userRepository;
     private final AuthenticationRepository authenticationRepository;
     private final BCryptPasswordEncoder encoder;
     private final JwtTokenService jwtTokenService;
@@ -20,26 +21,24 @@ public class LocalLoginService {
                              AuthenticationRepository authenticationRepository,
                              BCryptPasswordEncoder encoder,
                              JwtTokenService jwtTokenService) {
-        this.userRepository = userRepository;
         this.authenticationRepository = authenticationRepository;
         this.encoder = encoder;
         this.jwtTokenService = jwtTokenService;
     }
 
 
-    public String authenticate(AuthRequest req) {
-
-        String token = null;
+    public String authenticate(LocalLoginData loginData) { 
 
 
-        Authentication auth = authenticationRepository.findByEmailAndProvider(
-                req.getEmail(), req.getProvider());
+
+        Authentication auth = authenticationRepository.findByEmail(
+                loginData.getEmail());
 
         if (auth == null) {
             throw new InvalidCredentialsException("User not found");
         }
 
-        if (!encoder.matches(req.getPassword(), auth.getPasswordHash())) {
+        if (!encoder.matches(loginData.getPassword(), auth.getPasswordHash())) {
             throw new InvalidCredentialsException("Invalid email or password");
         }
 
