@@ -1,5 +1,4 @@
-
-const API_BASE = "https://loginsystem-1-23tz.onrender.com/api";
+import { API_BASE_URL } from "../config.mjs";
 
 export const handleRegister = {
     register: async (email, password, provider, name = 'LOCAL') => {
@@ -10,7 +9,7 @@ export const handleRegister = {
                 return;
             }
 
-            const endpoint = `${API_BASE}/auth/signup`;
+            const endpoint = `${API_BASE_URL}/api/auth/local/signup`;
             
             const response = await fetch(endpoint, {
                 method: 'POST',

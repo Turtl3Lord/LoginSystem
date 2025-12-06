@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/delete.css">
+    <title>Deletar Conta</title>
+</head>
+<body>
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <p>Deletando conta...</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="deleteContainer">
+            <h2>DELETAR CONTA</h2>
+            <p class="subtitle">Esta ação é irreversível. Confirme suas credenciais para continuar.</p>
+            
+            <form id="deleteForm" style="width: 100%;">
+                <div class="inputGroup">
+                    <label class="inputLabel" for="email">E-mail</label>
+                    <input 
+                        class="inputField" 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="seu@email.com"
+                        required
+                    >
+                </div>
+                
+                <div class="inputGroup">
+                    <label class="inputLabel" for="password">Senha</label>
+                    <input 
+                        class="inputField" 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Digite sua senha"
+                        required
+                    >
+                </div>
+                
+                <button class="deleteButton btn-bg-red" type="button" id="deleteBtn">
+                    Deletar Conta
+                </button>
+            </form>
+            
+            <div class="backLink">
+                <a href="dashboard.html">Voltar ao Dashboard</a>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="../js/delete/delete.js"></script>
+</body>
+</html>

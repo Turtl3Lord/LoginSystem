@@ -4,8 +4,8 @@ import com.BackEnd.DTO.authentication.LocalLoginData;
 import com.BackEnd.exceptions.InvalidCredentialsException;
 import com.BackEnd.models.Authentication;
 import com.BackEnd.repository.AuthenticationRepository;
-import com.BackEnd.repository.UserRepository;
-import com.BackEnd.services.JwtTokenService;
+import com.BackEnd.services.jwt.JwtTokenService;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class LocalLoginService {
     private final JwtTokenService jwtTokenService;
 
 
-    public LocalLoginService(UserRepository userRepository,
+    public LocalLoginService(
                              AuthenticationRepository authenticationRepository,
                              BCryptPasswordEncoder encoder,
                              JwtTokenService jwtTokenService) {
@@ -27,18 +27,18 @@ public class LocalLoginService {
     }
 
 
-    public String authenticate(LocalLoginData loginData) { 
+    public String authenticate(LocalLoginData req) {
 
 
 
         Authentication auth = authenticationRepository.findByEmail(
-                loginData.getEmail());
+                req.getEmail());
 
         if (auth == null) {
             throw new InvalidCredentialsException("User not found");
         }
 
-        if (!encoder.matches(loginData.getPassword(), auth.getPasswordHash())) {
+        if (!encoder.matches(req.getPassword(), auth.getPasswordHash())) {
             throw new InvalidCredentialsException("Invalid email or password");
         }
 

@@ -1,5 +1,4 @@
-const API_BASE = "https://loginsystem-1-23tz.onrender.com/api";
-
+import { API_BASE_URL } from "../config.mjs";
 export const  handleLogin = {
     login: async (email, password, provider = 'LOCAL') => {
         if (provider !== 'LOCAL') {
@@ -7,7 +6,7 @@ export const  handleLogin = {
             return;
         }
 
-        const endpoint = `${API_BASE}/auth/signin`;
+        const endpoint = `${API_BASE_URL}/api/auth/local/signin`;
 
         const response = await fetch(endpoint, {
             method: 'POST',

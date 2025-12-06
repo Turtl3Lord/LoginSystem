@@ -1,11 +1,11 @@
 
-const API_BASE = "https://loginsystem-1-23tz.onrender.com/api";
+import { API_BASE_URL } from "../config.mjs";
 
 export const  dashboardRequests = {
 
     fetchUserData: async (token) => {
     console.log('Fetching user data with token:', token);
-    const endpoint = `${API_BASE}/user/profile`;
+    const endpoint = `${API_BASE_URL}/api/user/profile`;
 
     const response = await fetch(endpoint, {
         method: 'GET',

@@ -1,55 +1,78 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Full-screen center layout */
 body, html {
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f5f6fa;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    user-select: none;
 }
 
 .dashboard-container {
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(135deg, #e8f0f8 0%, #f0f0f0 100%);
 }
 
-/* User name box */
 .user-box {
-    background: white;
-    padding: 40px 70px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 60px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .user-box h1 {
-    font-size: 2.2rem;
+    margin: 0 0 30px 0;
     color: #333;
-    font-weight: 600;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.logout-btn, .delete-btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
 }
 
 .logout-btn {
-    background-color: #007bff;
+    background-color: #007BFF;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
 
 .logout-btn:hover {
-    background-color: #0056b3;
+    background-color: #1066cc;
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+    transform: translateY(-2px);
 }
 
-.logout-btn:active {
-    background-color: #004085;
+.delete-btn {
+    background-color: #d32f2f;
+    color: white;
+    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+}
+
+.delete-btn:hover {
+    background-color: #b71c1c;
+    box-shadow: 0 6px 15px rgba(211, 47, 47, 0.4);
+    transform: translateY(-2px);
+}
+
+.logout-btn:active, .delete-btn:active {
+    transform: translateY(0);
 }

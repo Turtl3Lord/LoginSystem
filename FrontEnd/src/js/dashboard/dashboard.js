@@ -1,26 +1,40 @@
-import { dashboardRequests } from "./dashboardRequests.mjs";
-document.onload = (() => {
-    console.log('Dashboard loaded');
-    const token = localStorage.getItem('authToken');   
+import { API_BASE_URL } from '../config.mjs';
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem('authToken');
+    
     if (!token) {
         window.location.href = 'index.html';
         return;
     }
-    dashboardRequests.fetchUserData(token).then(data => {
-        const name = data?.name || 'User';
-        const userNameElem = document.getElementById('userName');
-        userNameElem.textContent = `Welcome, ${name}!`;
-        userNameElem.textContent = `Welcome, ${name}!`;
-    }).catch(err => {
-        console.error('Error fetching user data:', err);
-        localStorage.removeItem('authToken');
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/user/profile`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+        }
+
+        const userData = await response.json();
+        document.getElementById('userName').textContent = userData.name;
+    } catch (error) {
+        console.error('Error:', error);
+        localStorage.removeItem('token');
+        window.location.href = 'index.html';
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        localStorage.removeItem('token');
         window.location.href = 'index.html';
     });
-})();
 
-    document.getElementById('logoutBtn').addEventListener('click', function() {
-    // Aqui você adiciona a lógica de logout
-    // Por exemplo: limpar localStorage, sessionStorage, redirecionar, etc.
-    localStorage.clear(); // ou removeItem('token')
-    window.location.href = './index.html'; // ajuste o caminho conforme necessário
+    document.getElementById('deleteBtn').addEventListener('click', () => {
+        window.location.href = 'delete.html';
+    });
 });
