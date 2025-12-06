@@ -7,21 +7,6 @@ O projeto segue boas práticas de arquitetura, separando claramente as camadas.
 
 ---
 
-## 📚 Sumário
-
-- [Visão Geral](#-visão-geral)
-- [Arquitetura](#-arquitetura)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Configuração do Ambiente](#-configuração-do-ambiente)
-- [Variáveis de Ambiente](#-variáveis-de-ambiente)
-- [Como Executar o Back-end](#-como-executar-o-back-end)
-- [Endpoints da API](#-endpoints-da-api)
-- [Front-end](#-front-end)
-- [Funcionalidades](#-funcionalidades)
-- [Licença](#-licença)
-
----
-
 ## 📌 Visão Geral
 
 O **LoginSystem** é uma API de autenticação que oferece:
