@@ -16,7 +16,7 @@ export const  handleLogin = {
                 password,
                 provider
             })
-        });
+        }); 
 
         if (!response.ok) {
             const text = await response.text();
