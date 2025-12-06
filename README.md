@@ -1,4 +1,4 @@
-````md
+
 # 🚀 LoginSystem — Backend (Spring Boot) + Frontend (HTML/CSS/JS)
 
 Sistema completo de autenticação utilizando **Spring Boot**, **JWT** e **PostgreSQL**.
@@ -64,27 +64,7 @@ CREATE DATABASE LoginSystem;
 
 ## ⚙️ Variáveis de Ambiente (`application.properties`)
 
-```properties
-spring.application.name=BackEnd
-
-# JWT
-JWT_SECRET_KEY=${_JWT_SECRET_KEY:abaracatedebarabanana}
-JWT_EXPIRATION_SECONDS=${_JWT_EXPIRATION_SECONDS:3600}
-JWT_ISSUER=${_JWT_ISSUER:http://localhost:5000}
-
-# Porta do servidor
-server.port=${PORT:5000}
-
-# Banco de Dados
-spring.datasource.url=${DB_URL:jdbc:postgresql://localhost:5432/LoginSystem}
-spring.datasource.username=${DB_USERNAME:seu_usuário}
-spring.datasource.password=${DB_PASSWORD:sua_senha}
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-spring.jpa.hibernate.ddl-auto=update
-
-# CORS
-frontend.url=${FRONTEND_URL:http://seu-endereco-de-frontend}
-
+ajustar mudanças relativas a configuração nesse arquivo.
 
 ---
 
